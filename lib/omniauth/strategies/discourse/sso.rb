@@ -75,6 +75,8 @@ module OmniAuth
         end
 
         def get_hmac_hex_string(payload)
+          logger.info payload.inspect
+          logger.info @sso_secret.inspect
           OpenSSL::HMAC.hexdigest("sha256", @sso_secret, payload)
         end
 
