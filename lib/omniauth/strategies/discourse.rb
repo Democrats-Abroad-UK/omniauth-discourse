@@ -13,6 +13,8 @@ module OmniAuth
       attr_reader :user_info
 
       def request_phase
+        logger = Logger.new(STDOUT)
+        loger.debug options.inspect
         sso = SSO.new(options.sso_secret, options.sso_url, callback_url)
         session[:sso_nonce] = sso.nonce
 

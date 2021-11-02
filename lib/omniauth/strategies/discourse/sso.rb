@@ -75,8 +75,6 @@ module OmniAuth
         end
 
         def get_hmac_hex_string(payload)
-          Rails.logger.info payload.inspect
-          Rails.logger.info @sso_secret.inspect
           OpenSSL::HMAC.hexdigest("sha256", @sso_secret, payload)
         end
 
